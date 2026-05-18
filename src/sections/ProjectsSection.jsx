@@ -147,14 +147,11 @@ const ProjectCard = ({ project, index }) => {
   }
 
   return (
-    <motion.article
+    <article
       ref={cardRef}
-      variants={fadeIn('up', 0.15 + index * 0.05)}
-      whileHover={{ y: -16, scale: 1.03 }}
-      transition={{ type: 'spring', stiffness: 240, damping: 20 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group relative overflow-hidden rounded-[28px] shadow-[0_32px_120px_rgba(2,10,30,0.35)] transition duration-300"
+      className="group relative overflow-hidden rounded-[28px] shadow-[0_32px_120px_rgba(2,10,30,0.35)] transition-transform duration-300 hover:-translate-y-2 hover:scale-[1.02]"
       style={{
         perspective: '1000px',
       }}
@@ -253,7 +250,7 @@ const ProjectCard = ({ project, index }) => {
           </div>
         </div>
       </div>
-    </motion.article>
+    </article>
   )
 }
 

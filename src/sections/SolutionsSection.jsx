@@ -65,12 +65,9 @@ export default function SolutionsSection() {
           {services.map((item, index) => {
             const Icon = item.icon
             return (
-              <motion.div
+              <div
                 key={item.title}
-                variants={fadeIn('up', 0.15 + index * 0.05)}
-                whileHover={{ y: -10, scale: 1.02 }}
-                transition={{ type: 'spring', stiffness: 220, damping: 22 }}
-                className="glass-card group relative overflow-hidden rounded-[34px] px-6 py-8 shadow-[0_30px_100px_rgba(0,175,255,0.12)] transition duration-300 hover:-translate-y-1"
+                className="glass-card group relative overflow-hidden rounded-[34px] px-6 py-8 shadow-[0_30px_100px_rgba(0,175,255,0.12)] transition-transform duration-300 hover:-translate-y-2 hover:scale-[1.02]"
                 style={{ perspective: 1200 }}
               >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.12),_transparent_22%),radial-gradient(circle_at_bottom_right,_rgba(139,92,246,0.12),_transparent_22%)] opacity-60" />
@@ -83,7 +80,7 @@ export default function SolutionsSection() {
                   <p className="text-sm leading-7 text-slate-300">{item.description}</p>
                 </div>
                 <div className="pointer-events-none absolute -right-10 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-cyan/10 blur-2xl opacity-70" />
-              </motion.div>
+              </div>
             )
           })}
         </div>

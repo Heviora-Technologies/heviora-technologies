@@ -350,12 +350,10 @@ export default function ContactSection() {
                 </label>
               </div>
 
-              <motion.button
-                whileHover={{ y: -2, scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
+              <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-[28px] bg-gradient-to-r from-[#06b6d4] to-[#2563eb] px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-white shadow-[0_36px_120px_rgba(6,182,212,0.28)] transition duration-300 hover:shadow-[0_50px_160px_rgba(6,182,212,0.32)] hover:scale-105 focus:outline-none focus:ring-4 focus:ring-cyan/20 disabled:cursor-not-allowed disabled:opacity-60"
+                className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-[28px] bg-gradient-to-r from-[#06b6d4] to-[#2563eb] px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-white shadow-[0_36px_120px_rgba(6,182,212,0.28)] transition duration-300 hover:shadow-[0_50px_160px_rgba(6,182,212,0.32)] hover:-translate-y-1 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-cyan/20 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100 disabled:hover:translate-y-0"
               >
                 {isSubmitting ? (
                   <>
@@ -365,7 +363,7 @@ export default function ContactSection() {
                 ) : (
                   'Start Your Project'
                 )}
-              </motion.button>
+              </button>
 
             </motion.form>
           </div>

@@ -13,6 +13,7 @@ export default defineConfig({
     // Optimize build output
     target: 'esnext',
     minify: 'terser',
+    cssMinify: true,
     terserOptions: {
       compress: {
         drop_console: true,

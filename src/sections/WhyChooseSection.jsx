@@ -64,11 +64,9 @@ export default function WhyChooseSection() {
           {reasons.map((reason, index) => {
             const Icon = reason.icon
             return (
-              <motion.article
+              <article
                 key={reason.title}
-                variants={fadeIn('up', 0.15 + index * 0.04)}
-                whileHover={{ y: -10 }}
-                className="group glass-card relative overflow-hidden rounded-[32px] p-8 transition duration-300 hover:-translate-y-1"
+                className="group glass-card relative overflow-hidden rounded-[32px] p-8 transition-transform duration-300 hover:-translate-y-2"
               >
                 <div className="absolute inset-x-6 top-6 h-0.5 rounded-full bg-gradient-to-r from-cyan/30 via-transparent to-purple/30" />
                 <div className="absolute right-6 top-6 h-24 w-24 rounded-full bg-cyan/10 blur-3xl opacity-60" />
@@ -77,7 +75,7 @@ export default function WhyChooseSection() {
                 </div>
                 <h3 className="relative z-10 mt-6 text-2xl font-semibold text-white">{reason.title}</h3>
                 <p className="relative z-10 mt-4 text-sm leading-7 text-slate-300">{reason.description}</p>
-              </motion.article>
+              </article>
             )
           })}
         </div>

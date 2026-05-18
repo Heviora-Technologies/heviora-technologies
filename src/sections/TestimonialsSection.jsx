@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Star } from 'lucide-react'
 import { fadeIn, staggerContainer } from '../animations/motionVariants'
 
@@ -73,14 +73,9 @@ export default function TestimonialsSection() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.08),transparent_22%),radial-gradient(circle_at_bottom_right,_rgba(6,182,212,0.10),transparent_22%)] opacity-70" />
           <div className="absolute inset-x-12 top-8 h-16 rounded-full bg-white/5 blur-2xl" />
           <div className="relative z-10 grid gap-8">
-            <AnimatePresence initial={false} mode="wait">
-              <motion.article
+              <article
                 key={activeIndex}
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -24, scale: 0.96 }}
-                transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-                className="glass-card rounded-[32px] border border-white/10 bg-white/10 p-8 backdrop-blur-2xl shadow-[0_32px_90px_rgba(0,0,0,0.18)]"
+                className="glass-card rounded-[32px] border border-white/10 bg-white/10 p-8 backdrop-blur-2xl shadow-[0_32px_90px_rgba(0,0,0,0.18)] animate-in fade-in zoom-in duration-500"
               >
                 <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
                   <div className="space-y-4">
@@ -114,24 +109,22 @@ export default function TestimonialsSection() {
                 <blockquote className="mt-8 text-xl leading-9 text-slate-100 sm:text-2xl">
                   “{testimonials[activeIndex].quote}”
                 </blockquote>
-              </motion.article>
-            </AnimatePresence>
+              </article>
 
             <div className="grid gap-4 sm:grid-cols-3">
               {testimonials.map((item, index) => (
-                <motion.button
+                <button
                   key={item.name}
                   type="button"
                   onClick={() => setActiveIndex(index)}
-                  whileHover={{ y: -4 }}
-                  className={`rounded-[28px] border px-5 py-4 text-left transition ${activeIndex === index
+                  className={`rounded-[28px] border px-5 py-4 text-left transition-all duration-300 hover:-translate-y-1 ${activeIndex === index
                       ? 'border-cyan/40 bg-cyan/10 text-white shadow-[0_20px_70px_rgba(6,182,212,0.16)]'
                       : 'border-white/10 bg-white/5 text-slate-300 hover:border-cyan/25 hover:bg-white/10'
                     }`}
                 >
                   <p className="text-sm uppercase tracking-[0.28em] text-slate-400">{item.company}</p>
                   <p className="mt-3 text-lg font-semibold text-white">{item.name}</p>
-                </motion.button>
+                </button>
               ))}
             </div>
           </div>

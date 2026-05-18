@@ -101,26 +101,25 @@ export default function AboutSection() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               {stats.map((stat) => (
-                <motion.div
+                <div
                   key={stat.label}
-                  whileHover={{ y: -6 }}
-                  className="rounded-[28px] border border-white/10 bg-[#0c1a33]/90 p-6 backdrop-blur-xl"
+                  className="rounded-[28px] border border-white/10 bg-[#0c1a33]/90 p-6 backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1.5"
                 >
                   <p className="text-4xl font-semibold text-white">{counts[stat.label]}{stat.label === 'Client Satisfaction' ? '%' : '+'}</p>
                   <p className="mt-3 text-sm uppercase tracking-[0.28em] text-slate-400">{stat.label}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <motion.div whileHover={{ y: -6 }} className="rounded-[28px] border border-cyan/15 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="rounded-[28px] border border-cyan/15 bg-white/5 p-6 backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1.5">
                 <p className="text-sm uppercase tracking-[0.28em] text-cyan/90">Floating UI</p>
                 <p className="mt-3 text-lg font-semibold text-white">Glass-like dashboards with premium neon edges.</p>
-              </motion.div>
-              <motion.div whileHover={{ y: -6 }} className="rounded-[28px] border border-purple/15 bg-white/5 p-6 backdrop-blur-xl">
+              </div>
+              <div className="rounded-[28px] border border-purple/15 bg-white/5 p-6 backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1.5">
                 <p className="text-sm uppercase tracking-[0.28em] text-purple/90">Animated motion</p>
                 <p className="mt-3 text-lg font-semibold text-white">Cinematic scroll reveals and interactive visual layers.</p>
-              </motion.div>
+              </div>
             </div>
           </div>
         </motion.div>

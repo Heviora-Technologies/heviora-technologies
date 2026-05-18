@@ -1,10 +1,10 @@
-import { Suspense, useEffect, useRef, lazy } from 'react'
+import { Suspense, useEffect, useRef, lazy, useState } from 'react'
 import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { ArrowRight, Cpu, Sparkles, Code2, Layers, Cloud } from 'lucide-react'
 import BrandLogo from '../components/BrandLogo'
 import { ImageLoader } from '../components/LoadingStates'
 import { fadeIn, staggerContainer } from '../animations/motionVariants'
-import { isMobile } from '../utils/deviceDetection'
+import { isMobile, setupDeviceDetectionListener } from '../utils/deviceDetection'
 
 // Lazy load HeroCanvas for faster initial page load
 const HeroCanvas = lazy(() => import('../components/HeroCanvas'))
@@ -15,8 +15,14 @@ export default function HeroSection() {
   const pointerY = useMotionValue(0)
   const glowX = useTransform(pointerX, (value) => value / 12)
   const glowY = useTransform(pointerY, (value) => value / 12)
+  const [isMobileView, setIsMobileView] = useState(false)
 
   useEffect(() => {
+    setIsMobileView(isMobile())
+    const cleanup = setupDeviceDetectionListener(() => {
+      setIsMobileView(isMobile())
+    })
+    
     const hero = heroRef.current
     if (!hero || isMobile()) return // Skip mouse interaction on mobile
 
@@ -29,7 +35,10 @@ export default function HeroSection() {
     }
 
     hero.addEventListener('mousemove', handleMove, { passive: true })
-    return () => hero.removeEventListener('mousemove', handleMove)
+    return () => {
+      cleanup()
+      hero.removeEventListener('mousemove', handleMove)
+    }
   }, [pointerX, pointerY])
 
   return (
@@ -75,11 +84,9 @@ export default function HeroSection() {
             </motion.p>
 
             <motion.div variants={fadeIn('up', 0.35)} className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-              <motion.a
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.98 }}
+              <a
                 href="#services"
-                className="group relative inline-flex w-full overflow-hidden rounded-full border border-[#00C2FF]/40 bg-[#041627]/95 px-8 py-3 text-sm font-semibold text-[#EAF7FF] shadow-[0_0_60px_rgba(0,194,255,0.18)] transition duration-300 hover:border-[#66F2FF]/80 sm:w-auto sm:py-4"
+                className="group relative inline-flex w-full overflow-hidden rounded-full border border-[#00C2FF]/40 bg-[#041627]/95 px-8 py-3 text-sm font-semibold text-[#EAF7FF] shadow-[0_0_60px_rgba(0,194,255,0.18)] transition-all duration-300 hover:border-[#66F2FF]/80 hover:scale-105 active:scale-95 sm:w-auto sm:py-4"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-[#00C2FF]/20 via-transparent to-[#7B2EFF]/20 opacity-0 transition duration-500 group-hover:opacity-100" />
                 <span className="relative z-10 flex items-center justify-center gap-3 sm:justify-start">
@@ -87,16 +94,14 @@ export default function HeroSection() {
                   <ArrowRight className="h-4 w-4 text-[#66F2FF]" />
                 </span>
                 <span className="ripple-effect" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.98 }}
+              </a>
+              <a
                 href="#contact"
-                className="group relative inline-flex w-full overflow-hidden rounded-full border border-[#7B2EFF]/30 bg-[rgba(10,25,47,0.75)] px-8 py-3 text-sm font-semibold text-white transition duration-300 hover:border-[#7B2EFF]/60 hover:bg-[rgba(123,46,255,0.12)] sm:w-auto sm:py-4"
+                className="group relative inline-flex w-full overflow-hidden rounded-full border border-[#7B2EFF]/30 bg-[rgba(10,25,47,0.75)] px-8 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-[#7B2EFF]/60 hover:bg-[rgba(123,46,255,0.12)] hover:scale-105 active:scale-95 sm:w-auto sm:py-4"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-[#7B2EFF]/15 via-transparent to-[#00C2FF]/15 opacity-0 transition duration-500 group-hover:opacity-100" />
                 <span className="relative z-10">Get Started</span>
-              </motion.a>
+              </a>
             </motion.div>
 
             <motion.div variants={fadeIn('up', 0.45)} className="mt-10 w-full grid gap-3 sm:grid-cols-2 sm:gap-4">
@@ -128,10 +133,23 @@ export default function HeroSection() {
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,175,255,0.16),transparent_20%),radial-gradient(circle_at_bottom_right,rgba(139,92,246,0.14),transparent_24%)]" />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),transparent_60%)]" />
-            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-[rgba(255,255,255,0.08)] bg-[#071426]/90 shadow-[0_0_80px_rgba(0,175,255,0.08)] sm:rounded-[30px]">
-              <Suspense fallback={<ImageLoader />}>
-                <HeroCanvas />
-              </Suspense>
+            <div className="relative aspect-square w-full sm:aspect-video overflow-hidden rounded-xl border border-[rgba(255,255,255,0.08)] bg-[#071426]/90 shadow-[0_0_80px_rgba(0,175,255,0.08)] sm:rounded-[30px]">
+              {isMobileView ? (
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#071426] to-[#0a1b34]">
+                   <div className="absolute h-40 w-40 rounded-full bg-[#00AFFF]/20 blur-3xl"></div>
+                   <div className="absolute h-32 w-32 rounded-full bg-[#7B2EFF]/20 blur-2xl"></div>
+                   <div className="relative z-10 text-center">
+                     <div className="mx-auto mb-4 h-16 w-16 rounded-full border border-[#00AFFF]/30 bg-[#00AFFF]/10 shadow-[0_0_30px_rgba(0,175,255,0.2)] flex items-center justify-center">
+                        <Cpu className="h-8 w-8 text-[#66F2FF]" />
+                     </div>
+                     <span className="text-xs font-semibold tracking-widest text-white/80 uppercase">AI Core Active</span>
+                   </div>
+                </div>
+              ) : (
+                <Suspense fallback={<ImageLoader />}>
+                  <HeroCanvas />
+                </Suspense>
+              )}
               <div className="pointer-events-none absolute inset-0">
                 <div className="absolute left-4 top-4 h-12 w-12 rounded-full bg-[#00AFFF]/12 blur-3xl sm:left-6 sm:top-6 sm:h-16 sm:w-16" />
                 <div className="absolute right-4 top-12 h-16 w-16 rounded-full bg-[#8B5CF6]/12 blur-3xl sm:right-8 sm:top-16 sm:h-24 sm:w-24" />

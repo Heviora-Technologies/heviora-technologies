@@ -45,8 +45,8 @@ export const getOptimizedDPR = () => {
     // Cap at 1.5 on tablets
     return Math.min(dpr, 1.5)
   }
-  // Desktop: cap at 2
-  return Math.min(dpr, 2)
+  // Desktop: cap at 1.5 to prevent GPU overload on 4K/retina displays
+  return Math.min(dpr, 1.5)
 }
 
 /**

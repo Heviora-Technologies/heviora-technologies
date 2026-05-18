@@ -49,17 +49,16 @@ export default function TrustedTechSection() {
                 {items.map((item, index) => {
                   const Icon = item.icon
                   return (
-                    <motion.div
+                    <div
                       key={`${item.label}-${index}`}
-                      whileHover={{ y: -6, scale: 1.03 }}
-                      className="group glass-card min-w-[220px] cursor-default rounded-[28px] p-6 transition duration-300"
+                      className="group glass-card min-w-[220px] cursor-default rounded-[28px] p-6 transition-transform duration-300 hover:-translate-y-1.5 hover:scale-105"
                     >
                       <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-cyan/10 text-cyan shadow-glow transition duration-300 group-hover:bg-cyan/20">
                         <Icon className="h-6 w-6" />
                       </div>
                       <p className="text-lg font-semibold text-white">{item.label}</p>
                       <p className="mt-2 text-sm text-slate-400">Premium stack</p>
-                    </motion.div>
+                    </div>
                   )
                 })}
               </div>
@@ -69,17 +68,16 @@ export default function TrustedTechSection() {
                 {items.map((item, index) => {
                   const Icon = item.icon
                   return (
-                    <motion.div
+                    <div
                       key={`${item.label}-rev-${index}`}
-                      whileHover={{ y: -6, scale: 1.03 }}
-                      className="group min-w-[220px] cursor-default rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-[0_24px_80px_rgba(8,15,33,0.18)] transition duration-300"
+                      className="group min-w-[220px] cursor-default rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-[0_24px_80px_rgba(8,15,33,0.18)] transition-transform duration-300 hover:-translate-y-1.5 hover:scale-105"
                     >
                       <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-purple/10 text-purple shadow-glow transition duration-300 group-hover:bg-purple/20">
                         <Icon className="h-6 w-6" />
                       </div>
                       <p className="text-lg font-semibold text-white">{item.label}</p>
                       <p className="mt-2 text-sm text-slate-400">Trusted stack</p>
-                    </motion.div>
+                    </div>
                   )
                 })}
               </div>
