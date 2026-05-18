@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import compression from 'compression'
 import nodemailer from 'nodemailer'
 import dotenv from 'dotenv'
 import path from 'path'
@@ -12,8 +13,27 @@ const PORT = process.env.PORT || 5000
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+// Compression middleware for better performance
+app.use(compression())
+
 app.use(cors({ origin: process.env.CONTACT_ORIGIN || 'http://localhost:5173' }))
-app.use(express.json())
+app.use(express.json({ limit: '10mb' }))
+app.use(express.urlencoded({ limit: '10mb', extended: true }))
+
+// Cache headers for static assets
+app.use(express.static(path.join(__dirname, 'dist'), {
+  maxAge: '1y',
+  etag: false,
+  setHeaders: (res, path) => {
+    if (path.endsWith('.html')) {
+      res.set('Cache-Control', 'no-cache, no-store, must-revalidate')
+    } else if (path.match(/\.(js|css|woff2|webp)$/)) {
+      res.set('Cache-Control', 'public, max-age=31536000, immutable')
+    } else {
+      res.set('Cache-Control', 'public, max-age=3600')
+    }
+  },
+}))
 
 const submissions = new Map()
 
