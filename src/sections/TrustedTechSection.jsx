@@ -17,7 +17,7 @@ export default function TrustedTechSection() {
   const items = [...techItems, ...techItems]
 
   return (
-    <section id="trusted" className="relative overflow-hidden border-t border-white/10 px-6 py-20 sm:px-8 lg:px-10">
+    <section id="trusted" className="relative overflow-x-hidden border-t border-white/10 px-4 py-16 sm:px-6 lg:px-8">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.12),_transparent_22%),radial-gradient(circle_at_bottom_right,_rgba(6,182,212,0.16),_transparent_28%)]" />
       <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-[#8b5cf6]/15 blur-3xl" />
       <div className="pointer-events-none absolute right-0 bottom-0 h-72 w-72 rounded-full bg-cyan/10 blur-3xl" />

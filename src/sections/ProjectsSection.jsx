@@ -256,7 +256,7 @@ const ProjectCard = ({ project, index }) => {
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="relative overflow-hidden border-t border-white/10 px-6 py-20 sm:px-8 lg:px-10">
+    <section id="projects" className="relative overflow-x-hidden border-t border-white/10 px-4 py-16 sm:px-6 lg:px-8">
       {/* Ambient Gradient Backgrounds */}
       <div className="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top,_rgba(6,182,212,0.14),_transparent_26%)] blur-3xl pointer-events-none" />
       <div className="absolute right-0 top-20 h-56 w-56 rounded-full bg-[#8b5cf6]/15 blur-3xl pointer-events-none" />

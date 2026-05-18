@@ -42,7 +42,7 @@ export default function HeroSection() {
   }, [pointerX, pointerY])
 
   return (
-    <section id="home" ref={heroRef} className="relative w-full overflow-hidden border-b border-[rgba(59,130,246,0.16)] bg-[#050816] px-4 py-12 sm:px-8 md:py-20 lg:px-10">
+    <section id="home" ref={heroRef} className="relative w-full overflow-x-hidden border-b border-[rgba(59,130,246,0.16)] bg-[#050816] px-4 py-12 sm:px-6 md:py-20 lg:px-8">
       <div className="pointer-events-none absolute inset-0 section-flow" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_top,rgba(0,175,255,0.16),transparent_40%)] blur-3xl" />
       <div className="pointer-events-none absolute right-4 top-24 h-40 w-40 rounded-full bg-[#8B5CF6]/14 blur-3xl sm:right-8 sm:h-56 sm:w-56" />

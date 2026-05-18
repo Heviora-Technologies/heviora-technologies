@@ -40,7 +40,7 @@ export default function AboutSection() {
   }, [isInView])
 
   return (
-    <section id="about" ref={sectionRef} className="relative overflow-hidden border-t border-white/10 px-6 py-20 sm:px-8 lg:px-10">
+    <section id="about" ref={sectionRef} className="relative overflow-x-hidden border-t border-white/10 px-4 py-16 sm:px-6 lg:px-8">
       <div className="absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.14),_transparent_28%)] blur-3xl" />
       <div className="absolute right-0 top-24 h-56 w-56 rounded-full bg-purple/15 blur-3xl" />
       <div className="absolute left-0 bottom-12 h-44 w-44 rounded-full bg-cyan/15 blur-3xl" />

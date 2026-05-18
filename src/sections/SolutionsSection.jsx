@@ -37,7 +37,7 @@ const services = [
 
 export default function SolutionsSection() {
   return (
-    <section id="services" className="relative overflow-hidden border-t border-white/10 px-6 pt-20 pb-24 sm:px-8 lg:px-10">
+    <section id="services" className="relative overflow-x-hidden border-t border-white/10 px-4 py-16 sm:px-6 lg:px-8">
       <div className="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.15),_transparent_30%)] blur-3xl" />
       <div className="absolute left-10 top-20 h-56 w-56 rounded-full bg-purple/15 blur-3xl" />
       <div className="absolute right-10 bottom-24 h-64 w-64 rounded-full bg-cyan/10 blur-3xl" />

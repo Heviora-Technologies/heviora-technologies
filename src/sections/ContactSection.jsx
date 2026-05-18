@@ -176,11 +176,11 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden border-t border-white/10 px-6 py-20 sm:px-8 lg:px-10">
-      <div className="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.18),_transparent_30%)] blur-3xl pointer-events-none" />
-      <div className="absolute left-10 top-28 h-52 w-52 rounded-full bg-purple/15 blur-3xl pointer-events-none" />
-      <div className="absolute right-10 bottom-24 h-64 w-64 rounded-full bg-cyan/10 blur-3xl pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.04),_transparent_48%)] pointer-events-none" />
+    <section id="contact" className="relative overflow-x-hidden border-t border-white/10 px-4 py-16 sm:px-6 lg:px-8">
+      <div className="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.18),_transparent_30%)] blur-3xl pointer-events-none -z-10" />
+      <div className="absolute left-10 top-28 h-52 w-52 rounded-full bg-purple/15 blur-3xl pointer-events-none -z-10" />
+      <div className="absolute right-10 bottom-24 h-64 w-64 rounded-full bg-cyan/10 blur-3xl pointer-events-none -z-10" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.04),_transparent_48%)] pointer-events-none -z-10" />
 
       <div className="mx-auto max-w-7xl">
         <motion.div
@@ -188,7 +188,7 @@ export default function ContactSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="relative overflow-hidden rounded-[36px] border border-white/10 bg-[#07112b]/80 p-8 shadow-[0_45px_120px_rgba(7,11,28,0.45)] backdrop-blur-3xl sm:p-12"
+          className="relative z-10 overflow-hidden rounded-[36px] border border-white/10 bg-[#07112b]/80 p-8 shadow-[0_45px_120px_rgba(7,11,28,0.45)] backdrop-blur-3xl sm:p-12 w-full"
         >
           <div className="absolute inset-x-10 top-8 h-16 rounded-full bg-white/5 blur-2xl" />
           <div className="absolute inset-x-12 bottom-8 h-16 rounded-full bg-cyan/10 blur-2xl" />
@@ -257,7 +257,7 @@ export default function ContactSection() {
             <motion.form
               variants={fadeIn('up', 0.2)}
               onSubmit={handleSubmit}
-              className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-8 backdrop-blur-xl shadow-[0_35px_140px_rgba(8,15,33,0.24)] sm:p-10"
+              className="relative z-10 overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-8 backdrop-blur-xl shadow-[0_35px_140px_rgba(8,15,33,0.24)] sm:p-10 w-full"
             >
               <div className="absolute inset-x-10 top-6 h-16 rounded-full bg-cyan/5 blur-2xl" />
               <div className="absolute inset-x-12 bottom-6 h-16 rounded-full bg-white/5 blur-2xl" />

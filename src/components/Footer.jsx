@@ -3,7 +3,7 @@ import BrandLogo from './BrandLogo'
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-[rgba(59,130,246,0.18)] bg-[#050816] py-12">
+    <footer className="relative overflow-x-hidden border-t border-[rgba(59,130,246,0.18)] bg-[#050816] px-4 py-12 sm:px-6 lg:px-8">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-[radial-gradient(circle_at_top,rgba(0,175,255,0.18),transparent_70%)]" />
       <div className="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[1.2fr_auto] lg:items-center lg:px-8">
         <div className="flex flex-col gap-5">

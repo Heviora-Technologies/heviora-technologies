@@ -37,7 +37,7 @@ const reasons = [
 
 export default function WhyChooseSection() {
   return (
-    <section id="why-choose" className="relative overflow-hidden border-t border-white/10 px-6 py-20 sm:px-8 lg:px-10">
+    <section id="why-choose" className="relative overflow-x-hidden border-t border-white/10 px-4 py-16 sm:px-6 lg:px-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.12),transparent_22%),radial-gradient(circle_at_bottom_right,_rgba(139,92,246,0.12),transparent_26%)]" />
       <div className="absolute left-10 top-10 h-56 w-56 rounded-full bg-cyan/10 blur-3xl" />
       <div className="absolute right-10 bottom-10 h-64 w-64 rounded-full bg-purple/10 blur-3xl" />
